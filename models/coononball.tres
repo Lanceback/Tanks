@@ -1,0 +1,7 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "coononball"
+params_cull_mode = 2
+albedo_color = Color( 0.226397, 0.212898, 0.218875, 1 )
+roughness = 0.5
