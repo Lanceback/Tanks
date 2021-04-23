@@ -27,8 +27,8 @@ func reload():
 
 func _process(delta):
 	
-	if Ammo <= 0 and Missiles <= 0:
-		$"../../Floor".messege("g")
+#	if Ammo <= 0 and Missiles <= 0:
+#		$"../../Floor".messege("g")
 	
 	if cooldown < 5 and cooldown > -1:
 		cooldown += delta

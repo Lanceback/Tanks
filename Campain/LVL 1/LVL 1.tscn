@@ -1,0 +1,521 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://models/Turret.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://scripts/GreenCannon.gd" type="Script" id=2]
+[ext_resource path="res://models/Turret_gun.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Campain/LVL 1/Scritps/Camera.gd" type="Script" id=4]
+[ext_resource path="res://scripts/GreenMovement.gd" type="Script" id=5]
+[ext_resource path="res://models/green.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://scripts/TurretHP.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Turret_gun.gd" type="Script" id=8]
+[ext_resource path="res://Campain/LVL 1/Scritps/lerp_gun.gd" type="Script" id=9]
+[ext_resource path="res://Battle/Original/scripts/Floor.gd" type="Script" id=10]
+[ext_resource path="res://images/lifebar2.png" type="Texture" id=11]
+[ext_resource path="res://images/bullet.png" type="Texture" id=12]
+[ext_resource path="res://images/lifebar3.png" type="Texture" id=13]
+[ext_resource path="res://images/missile.png" type="Texture" id=14]
+[ext_resource path="res://scripts/Drone.gd" type="Script" id=15]
+[ext_resource path="res://models/yellow.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://Campain/LVL 1/Scritps/Enemy_cannon.gd" type="Script" id=17]
+[ext_resource path="res://Campain/LVL 1/enemy_tank.gd" type="Script" id=18]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 100, 0.05, 50 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 50, 0.01, 25 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 100, 2, 0.1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 50, 1, 0.05 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.1, 2, 49.85 )
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 1, 4, 20 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.5, 2, 10 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1.4, 2, 1.4 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.509804, 0.501961, 0.501961, 0.980392 )
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.431373, 0.431373, 0.431373, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+
+[sub_resource type="SphereShape" id=15]
+radius = 25.0
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0.0941176, 0.560784, 0.121569, 1 )
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_color = Color( 0.313726, 0.278431, 0.278431, 1 )
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 3.2, 1.5, 1.5 )
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SphereMesh" id=23]
+material = SubResource( 22 )
+radius = 0.1
+height = 0.3
+radial_segments = 8
+rings = 2
+
+[sub_resource type="Curve3D" id=24]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 11.6008, 0.0183182, -22.6683, 0, 0, 0, 0, 0, 0, -34.4908, 0.0173569, -22.8411, 0, 0, 0, 0, 0, 0, -34.554, 0.000564575, -1.7539, 0, 0, 0, 0, 0, 0, -47.3256, -0.000228882, -1.13993, 0, 0, 0, 0, 0, 0, -47.4743, -0.0192871, 22.7945, 0, 0, 0, 0, 0, 0, 11.2337, -0.0178757, 22.7762, 0, 0, 0, 0, 0, 0, 10.451, 0.0123444, -15.2219, 0, 0, 0, 0, 0, 0, -26.3911, 0.0112686, -14.9745, 0, 0, 0, 0, 0, 0, -27.2766, -0.0103416, 12.144, 0, 0, 0, 0, 0, 0, 16.4097, -0.00898361, 11.7458, 0, 0, 0, 0, 0, 0, 11.6008, 0.0183182, -22.6683, 0, 0, 0, 0, 0, 0, 11.6008, 0.0183182, -22.6683 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="SphereMesh" id=25]
+
+[sub_resource type="SpatialMaterial" id=26]
+albedo_color = Color( 0.898039, 0.580392, 0.0352941, 1 )
+
+[sub_resource type="SpatialMaterial" id=27]
+albedo_color = Color( 0.439216, 0.403922, 0.403922, 1 )
+
+[sub_resource type="SpatialMaterial" id=28]
+albedo_color = Color( 0.145098, 0.141176, 0.141176, 1 )
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 3.1, 1.5, 1.5 )
+
+[node name="LVL 1" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1.62921e-07, -0.939693, 0.34202, 0, 0.34202, 0.939693, -1, 1.53095e-07, -5.57221e-08, 40, 20, 0 )
+script = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody" parent="."]
+script = ExtResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 2 )
+
+[node name="Wall 1" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 25 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall 1"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall 1"]
+shape = SubResource( 4 )
+
+[node name="Wall 2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -25 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall 2"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall 2"]
+shape = SubResource( 4 )
+
+[node name="Wall 3" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall 3"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall 3"]
+transform = Transform( 0.1, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="Wall 4" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Wall 4"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall 4"]
+transform = Transform( 0.1, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="Obst 1" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, 15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 1"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 1"]
+shape = SubResource( 9 )
+
+[node name="Obst 2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, -15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 2"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 2"]
+shape = SubResource( 9 )
+
+[node name="Obst 3" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09802, 2, -1.27931 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 3"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 3"]
+shape = SubResource( 9 )
+
+[node name="Obst 4" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9619, 2, -1.27931 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 4"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 4"]
+shape = SubResource( 9 )
+
+[node name="Obst 5" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -9.34025, 2, 13.9176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 5"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 5"]
+shape = SubResource( 9 )
+
+[node name="Obst 6" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -9.34025, 2, -18.6214 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 6"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 6"]
+shape = SubResource( 9 )
+
+[node name="Obst 7" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -24.603, 2, 18.7376 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 7"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 7"]
+shape = SubResource( 9 )
+
+[node name="Obst 8" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.675, 2, -15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Obst 8"]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obst 8"]
+shape = SubResource( 9 )
+
+[node name="Turret" type="StaticBody" parent="."]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 17, 0, 22 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Turret"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 10 )
+
+[node name="Turret body" type="MeshInstance" parent="Turret"]
+mesh = ExtResource( 1 )
+material/0 = SubResource( 11 )
+material/1 = SubResource( 11 )
+material/2 = SubResource( 11 )
+material/3 = SubResource( 12 )
+
+[node name="Turret_gun" type="MeshInstance" parent="Turret/Turret body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268555, 0.00958395, -0.0100479 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
+script = ExtResource( 8 )
+
+[node name="popgun" type="Position3D" parent="Turret/Turret body/Turret_gun"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 2.2, -2.1 )
+
+[node name="aim" type="RayCast" parent="Turret/Turret body/Turret_gun/popgun"]
+enabled = true
+cast_to = Vector3( -40, 0, 0 )
+
+[node name="lerp_gun" type="Position3D" parent="Turret/Turret body"]
+transform = Transform( 1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0.35, 0 )
+script = ExtResource( 9 )
+
+[node name="detect" type="Area" parent="Turret"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Turret/detect"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="Turret2" type="StaticBody" parent="."]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 17, 0, -21 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Turret2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 10 )
+
+[node name="Turret body" type="MeshInstance" parent="Turret2"]
+mesh = ExtResource( 1 )
+material/0 = SubResource( 11 )
+material/1 = SubResource( 11 )
+material/2 = SubResource( 11 )
+material/3 = SubResource( 12 )
+
+[node name="Turret_gun" type="MeshInstance" parent="Turret2/Turret body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268555, 0.00958395, -0.0100479 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
+script = ExtResource( 8 )
+
+[node name="popgun" type="Position3D" parent="Turret2/Turret body/Turret_gun"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 2.2, -2.1 )
+
+[node name="aim" type="RayCast" parent="Turret2/Turret body/Turret_gun/popgun"]
+enabled = true
+cast_to = Vector3( -40, 0, 0 )
+
+[node name="lerp_gun" type="Position3D" parent="Turret2/Turret body"]
+transform = Transform( 1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0.35, 0 )
+script = ExtResource( 9 )
+
+[node name="detect" type="Area" parent="Turret2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Turret2/detect"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="Turret3" type="StaticBody" parent="."]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -5.90778, -0.0497742, -6.75805 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Turret3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 10 )
+
+[node name="Turret body" type="MeshInstance" parent="Turret3"]
+mesh = ExtResource( 1 )
+material/0 = SubResource( 11 )
+material/1 = SubResource( 11 )
+material/2 = SubResource( 11 )
+material/3 = SubResource( 12 )
+
+[node name="Turret_gun" type="MeshInstance" parent="Turret3/Turret body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268555, 0.00958395, -0.0100479 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
+script = ExtResource( 8 )
+
+[node name="popgun" type="Position3D" parent="Turret3/Turret body/Turret_gun"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 2.2, -2.1 )
+
+[node name="aim" type="RayCast" parent="Turret3/Turret body/Turret_gun/popgun"]
+enabled = true
+cast_to = Vector3( -40, 0, 0 )
+
+[node name="lerp_gun" type="Position3D" parent="Turret3/Turret body"]
+transform = Transform( 1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0.35, 0 )
+script = ExtResource( 9 )
+
+[node name="detect" type="Area" parent="Turret3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Turret3/detect"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.930078, -0.00488554, 0.367329, -0.367362, -0.0123691, 0.929996, 0, -0.999912, -0.013299, 0, 22.5504, 0 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 2.0
+spot_range = 30.0
+spot_attenuation = 0.574349
+spot_angle_attenuation = 0.378928
+
+[node name="Controller" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.369, 3, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Controller"]
+transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Controller"]
+transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Green_tank" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 1, 0 )
+script = ExtResource( 5 )
+
+[node name="green" type="MeshInstance" parent="Green_tank"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = SubResource( 18 )
+material/1 = SubResource( 19 )
+material/2 = SubResource( 20 )
+material/3 = SubResource( 18 )
+material/4 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Green_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 21 )
+
+[node name="Cannon" type="Position3D" parent="Green_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62324, 1.83297, 0 )
+script = ExtResource( 2 )
+
+[node name="g_ammo" type="Label" parent="Green_tank/Cannon"]
+margin_left = 80.0
+margin_top = 75.0
+margin_right = 120.0
+margin_bottom = 106.0
+text = "
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="missiles" type="Label" parent="Green_tank/Cannon"]
+margin_left = 80.0
+margin_top = 150.0
+margin_right = 120.0
+margin_bottom = 181.0
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="smoke" type="CPUParticles" parent="Green_tank/Cannon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123711, 0.056221, 0.0392494 )
+emitting = false
+explosiveness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource( 23 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 1.0
+
+[node name="g_hp" type="TextureProgress" parent="Green_tank"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 210.0
+margin_bottom = 50.0
+max_value = 32.0
+value = 32.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="g_bullet_pic" type="TextureRect" parent="Green_tank"]
+margin_left = 10.0
+margin_top = 50.0
+margin_right = 110.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Green_tank"]
+margin_left = 20.0
+margin_top = 125.0
+margin_right = 120.0
+margin_bottom = 225.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+curve = SubResource( 24 )
+
+[node name="Drone" type="PathFollow" parent="Path"]
+transform = Transform( -0.00374887, -2.08509e-05, -0.999993, 7.10543e-15, 1, -2.0851e-05, 0.999993, -7.81679e-08, -0.00374887, 11.6008, 0.0183182, -22.6683 )
+rotation_mode = 4
+script = ExtResource( 15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Path/Drone"]
+mesh = SubResource( 25 )
+material/0 = null
+
+[node name="SpotLight" type="SpotLight" parent="Path/Drone"]
+transform = Transform( 1, 0, 0, 0, -0.0202794, 0.999794, 0, -0.999794, -0.0202794, 0, 0, 0 )
+light_color = Color( 0, 0.882353, 1, 1 )
+light_energy = 2.0
+light_negative = true
+spot_range = 12.5
+
+[node name="Enemy_tank" type="KinematicBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -45, 0.8, -20 )
+script = ExtResource( 18 )
+
+[node name="enemy" type="MeshInstance" parent="Enemy_tank"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 16 )
+material/0 = SubResource( 26 )
+material/1 = SubResource( 27 )
+material/2 = SubResource( 28 )
+material/3 = SubResource( 26 )
+material/4 = SubResource( 26 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemy_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+shape = SubResource( 29 )
+
+[node name="Enemy_cannon" type="Position3D" parent="Enemy_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64797, 1.82698, -1.5145e-06 )
+script = ExtResource( 17 )
+
+[node name="aim" type="RayCast" parent="Enemy_tank/Enemy_cannon"]
+enabled = true
+cast_to = Vector3( -35, 0, 0 )

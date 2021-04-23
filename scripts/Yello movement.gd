@@ -33,7 +33,7 @@ func get_input(delta):
 func bullet_hit(damage):
 	if disabled == false:
 		health -= damage
-		$"../Camera/y_hp".value = health
+		$"y_hp".value = health
 		if health < 1:
 			$"../Camera".green()
 			disabled = true

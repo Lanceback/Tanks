@@ -1,0 +1,675 @@
+[gd_scene load_steps=62 format=2]
+
+[ext_resource path="res://models/Walls.tres" type="Material" id=1]
+[ext_resource path="res://models/obst.tres" type="Material" id=2]
+[ext_resource path="res://models/green.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://models/yellow.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://scripts/GreenMovement.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Yello movement.gd" type="Script" id=6]
+[ext_resource path="res://scripts/GreenCannon.gd" type="Script" id=7]
+[ext_resource path="res://Battle/Original/scripts/obst4_boom.gd" type="Script" id=8]
+[ext_resource path="res://scripts/Yellow_cannon.gd" type="Script" id=9]
+[ext_resource path="res://Battle/Original/scripts/Camera.gd" type="Script" id=10]
+[ext_resource path="res://images/lifebar2.png" type="Texture" id=11]
+[ext_resource path="res://images/lifebar3.png" type="Texture" id=12]
+[ext_resource path="res://images/bullet.png" type="Texture" id=13]
+[ext_resource path="res://Battle/Original/scripts/Floor.gd" type="Script" id=14]
+[ext_resource path="res://images/fire.png" type="Texture" id=16]
+[ext_resource path="res://images/missile.png" type="Texture" id=17]
+[ext_resource path="res://scripts/Exit.gd" type="Script" id=18]
+[ext_resource path="res://scripts/ContinueButton.gd" type="Script" id=19]
+[ext_resource path="res://scripts/toMainMenu.gd" type="Script" id=20]
+[ext_resource path="res://models/wall.tres" type="ArrayMesh" id=21]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.439216, 0.129412, 0.129412, 1 )
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="ArrayMesh" id=9]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 3.341, 3.341, 11.647 )
+
+[sub_resource type="ArrayMesh" id=11]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 3, 3, 12 )
+
+[sub_resource type="ArrayMesh" id=13]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 3, 3, 12 )
+
+[sub_resource type="ArrayMesh" id=15]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 3, 3, 12 )
+
+[sub_resource type="ArrayMesh" id=17]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0.556863, 0.556863, 0.556863, 1 )
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 1, 1, 46 )
+
+[sub_resource type="ArrayMesh" id=20]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 1, 1, 46 )
+
+[sub_resource type="ArrayMesh" id=22]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 1, 1, 48 )
+
+[sub_resource type="ArrayMesh" id=24]
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 129, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 1, 1, 48 )
+
+[sub_resource type="ArrayMesh" id=26]
+surfaces/0 = {
+"aabb": AABB( -1, -1.88791, -1, 2.00001, 2, 2 ),
+"array_data": PoolByteArray( 0, 0, 128, 63, 22, 167, 241, 191, 255, 255, 127, 191, 0, 129, 0, 0, 0, 0, 128, 63, 22, 167, 241, 191, 255, 255, 127, 191, 0, 0, 129, 0, 0, 0, 128, 63, 22, 167, 241, 191, 255, 255, 127, 191, 127, 0, 0, 0, 0, 0, 128, 63, 22, 167, 241, 191, 0, 0, 128, 63, 0, 0, 127, 0, 0, 0, 128, 63, 22, 167, 241, 191, 0, 0, 128, 63, 0, 129, 0, 0, 0, 0, 128, 63, 22, 167, 241, 191, 0, 0, 128, 63, 127, 0, 0, 0, 1, 0, 128, 191, 22, 167, 241, 191, 253, 255, 127, 63, 129, 0, 0, 0, 1, 0, 128, 191, 22, 167, 241, 191, 253, 255, 127, 63, 0, 0, 127, 0, 1, 0, 128, 191, 22, 167, 241, 191, 253, 255, 127, 63, 0, 129, 0, 0, 250, 255, 127, 191, 22, 167, 241, 191, 3, 0, 128, 191, 129, 0, 0, 0, 250, 255, 127, 191, 22, 167, 241, 191, 3, 0, 128, 191, 0, 129, 0, 0, 250, 255, 127, 191, 22, 167, 241, 191, 3, 0, 128, 191, 0, 0, 129, 0, 4, 0, 128, 63, 168, 142, 229, 61, 247, 255, 127, 191, 0, 127, 0, 0, 4, 0, 128, 63, 168, 142, 229, 61, 247, 255, 127, 191, 0, 0, 129, 0, 4, 0, 128, 63, 168, 142, 229, 61, 247, 255, 127, 191, 127, 0, 0, 0, 245, 255, 127, 63, 168, 142, 229, 61, 5, 0, 128, 63, 0, 0, 127, 0, 245, 255, 127, 63, 168, 142, 229, 61, 5, 0, 128, 63, 0, 127, 0, 0, 245, 255, 127, 63, 168, 142, 229, 61, 5, 0, 128, 63, 127, 0, 0, 0, 3, 0, 128, 191, 168, 142, 229, 61, 250, 255, 127, 63, 129, 0, 0, 0, 3, 0, 128, 191, 168, 142, 229, 61, 250, 255, 127, 63, 0, 0, 127, 0, 3, 0, 128, 191, 168, 142, 229, 61, 250, 255, 127, 63, 0, 127, 0, 0, 255, 255, 127, 191, 168, 142, 229, 61, 0, 0, 128, 191, 129, 0, 0, 0, 255, 255, 127, 191, 168, 142, 229, 61, 0, 0, 128, 191, 0, 127, 0, 0, 255, 255, 127, 191, 168, 142, 229, 61, 0, 0, 128, 191, 0, 0, 129, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 8, 0, 4, 0, 0, 0, 10, 0, 8, 0, 12, 0, 20, 0, 22, 0, 12, 0, 16, 0, 20, 0, 2, 0, 17, 0, 14, 0, 2, 0, 5, 0, 17, 0, 3, 0, 19, 0, 15, 0, 3, 0, 7, 0, 19, 0, 6, 0, 21, 0, 18, 0, 6, 0, 9, 0, 21, 0, 13, 0, 11, 0, 1, 0, 13, 0, 23, 0, 11, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 36,
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="Skin" id=27]
+
+[sub_resource type="BoxShape" id=28]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0941176, 0.560784, 0.121569, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.313726, 0.278431, 0.278431, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 3.2, 1.5, 1.5 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
+radius = 0.1
+height = 0.3
+radial_segments = 8
+rings = 2
+
+[sub_resource type="SpatialMaterial" id=29]
+albedo_color = Color( 0.898039, 0.580392, 0.0352941, 1 )
+
+[sub_resource type="SpatialMaterial" id=30]
+albedo_color = Color( 0.439216, 0.403922, 0.403922, 1 )
+
+[sub_resource type="SpatialMaterial" id=31]
+albedo_color = Color( 0.145098, 0.141176, 0.141176, 1 )
+
+[sub_resource type="BoxShape" id=32]
+extents = Vector3( 3, 1.5, 1.4 )
+
+[sub_resource type="SpatialMaterial" id=33]
+albedo_color = Color( 1, 0.890196, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=34]
+material = SubResource( 33 )
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SpatialMaterial" id=35]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SphereMesh" id=36]
+material = SubResource( 35 )
+radius = 0.1
+height = 0.3
+radial_segments = 8
+rings = 2
+
+[sub_resource type="VisualShaderNodeColorConstant" id=37]
+constant = Color( 0.0835895, 0.0852741, 0.191406, 1 )
+
+[sub_resource type="VisualShader" id=38]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Color:2
+	vec3 n_out2p0 = vec3(0.083590, 0.085274, 0.191406);
+	float n_out2p1 = 1.000000;
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -366.782, 22.5 )
+nodes/fragment/2/node = SubResource( 37 )
+nodes/fragment/2/position = Vector2( -120, 220 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=39]
+shader = SubResource( 38 )
+
+[sub_resource type="InputEventMouseButton" id=40]
+
+[sub_resource type="ShortCut" id=41]
+shortcut = SubResource( 40 )
+
+[node name="Main" type="Spatial"]
+
+[node name="obst 1" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -18, 3, -35 )
+script = ExtResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obst 1"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 12, 0, 0, 0 )
+mesh = ExtResource( 21 )
+material/0 = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obst 1"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 12, 0, 0, 0 )
+shape = SubResource( 8 )
+
+[node name="obst2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3, -30 )
+script = ExtResource( 8 )
+
+[node name="obst2" type="MeshInstance" parent="obst2"]
+transform = Transform( 3.34108, 0, 0, 0, 3.34108, 0, 0, 0, 11.6466, 0, 0, 0 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obst2"]
+shape = SubResource( 10 )
+
+[node name="obst3" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -28, 3, 14 )
+script = ExtResource( 8 )
+
+[node name="obst3" type="MeshInstance" parent="obst3"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 12, 0, 0, 0 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obst3"]
+shape = SubResource( 12 )
+
+[node name="obst4" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -7 )
+script = ExtResource( 8 )
+
+[node name="obst4" type="MeshInstance" parent="obst4"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 12, 0, 0, 0 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obst4"]
+shape = SubResource( 14 )
+
+[node name="obst5" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 25, 3, 24 )
+script = ExtResource( 8 )
+
+[node name="obst5" type="MeshInstance" parent="obst5"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 12, 0, 0, 0 )
+mesh = SubResource( 15 )
+material/0 = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obst5"]
+shape = SubResource( 16 )
+
+[node name="left wall" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 1, 0 )
+
+[node name="left wall" type="MeshInstance" parent="left wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 46, 0, 0, 0 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="left wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00255203, -0.0656109, 0.0836506 )
+shape = SubResource( 19 )
+
+[node name="right wall" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 1, 0 )
+
+[node name="right wall" type="MeshInstance" parent="right wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 46, 0, 0, 0 )
+mesh = SubResource( 20 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="right wall"]
+shape = SubResource( 21 )
+
+[node name="front wall" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1, -47 )
+
+[node name="front wall" type="MeshInstance" parent="front wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 48.0503, 0, 0, 0 )
+mesh = SubResource( 22 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="front wall"]
+shape = SubResource( 23 )
+
+[node name="back wall" type="StaticBody" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1, 47 )
+
+[node name="back wall" type="MeshInstance" parent="back wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 48.0503, 0, 0, 0 )
+mesh = SubResource( 24 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="back wall"]
+shape = SubResource( 25 )
+
+[node name="Floor" type="StaticBody" parent="."]
+transform = Transform( -47.9999, 0.000200566, -0.0612871, 0.0962219, 0.0999998, 0.0391628, 0.0613656, 8.1333e-05, -47.9999, 0, 0, 0 )
+script = ExtResource( 14 )
+
+[node name="floor" type="MeshInstance" parent="Floor"]
+transform = Transform( 1, -6.21281e-13, -3.49246e-10, -5.01284e-07, 1, -5.96046e-08, 0, 2.27374e-13, 1, 0, 0, 0 )
+mesh = SubResource( 26 )
+skin = SubResource( 27 )
+material/0 = SubResource( 18 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 28 )
+
+[node name="Green_tank" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.8, 0 )
+script = ExtResource( 5 )
+
+[node name="green" type="MeshInstance" parent="Green_tank"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+material/2 = SubResource( 3 )
+material/3 = SubResource( 1 )
+material/4 = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Green_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+shape = SubResource( 4 )
+
+[node name="Cannon" type="Position3D" parent="Green_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62324, 1.83297, 0 )
+script = ExtResource( 7 )
+
+[node name="g_ammo" type="Label" parent="Green_tank/Cannon"]
+margin_left = 80.0
+margin_top = 75.0
+margin_right = 120.0
+margin_bottom = 106.0
+text = "
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="missiles" type="Label" parent="Green_tank/Cannon"]
+margin_left = 80.0
+margin_top = 150.0
+margin_right = 120.0
+margin_bottom = 181.0
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="smoke" type="CPUParticles" parent="Green_tank/Cannon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123711, 0.056221, 0.0392494 )
+emitting = false
+explosiveness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource( 6 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 1.0
+
+[node name="g_hp" type="TextureProgress" parent="Green_tank"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 210.0
+margin_bottom = 50.0
+max_value = 32.0
+value = 32.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="g_bullet_pic" type="TextureRect" parent="Green_tank"]
+margin_left = 10.0
+margin_top = 50.0
+margin_right = 110.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Green_tank"]
+margin_left = 20.0
+margin_top = 125.0
+margin_right = 120.0
+margin_bottom = 225.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yellow_tank" type="KinematicBody" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -40, 0.8, 0 )
+script = ExtResource( 6 )
+
+[node name="yellow" type="MeshInstance" parent="Yellow_tank"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = SubResource( 29 )
+material/1 = SubResource( 30 )
+material/2 = SubResource( 31 )
+material/3 = SubResource( 29 )
+material/4 = SubResource( 29 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Yellow_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+shape = SubResource( 32 )
+
+[node name="Yellow_cannon" type="Position3D" parent="Yellow_tank"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64797, 1.82698, -1.5145e-06 )
+script = ExtResource( 9 )
+
+[node name="y_ammo" type="Label" parent="Yellow_tank/Yellow_cannon"]
+margin_left = 905.0
+margin_top = 80.0
+margin_right = 945.0
+margin_bottom = 94.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="flame" type="Label" parent="Yellow_tank/Yellow_cannon"]
+margin_left = 915.0
+margin_top = 150.0
+margin_right = 955.0
+margin_bottom = 164.0
+text = "500"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="flames" type="CPUParticles" parent="Yellow_tank/Yellow_cannon"]
+emitting = false
+amount = 32
+lifetime = 0.8
+lifetime_randomness = 1.0
+mesh = SubResource( 34 )
+direction = Vector3( -1, 0, 0 )
+spread = 10.0
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 30.0
+
+[node name="smoke" type="CPUParticles" parent="Yellow_tank/Yellow_cannon"]
+emitting = false
+explosiveness = 1.0
+lifetime_randomness = 1.0
+mesh = SubResource( 36 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 1.0
+
+[node name="y_hp" type="TextureProgress" parent="Yellow_tank"]
+margin_left = 1010.0
+margin_top = 10.0
+margin_right = 1210.0
+margin_bottom = 50.0
+rect_scale = Vector2( -1, 1 )
+max_value = 35.0
+value = 35.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="y_bullet_pic" type="TextureRect" parent="Yellow_tank"]
+margin_left = 1010.0
+margin_top = 50.0
+margin_right = 1110.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+rect_scale = Vector2( -0.8, 0.8 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="flame_picture" type="TextureRect" parent="Yellow_tank"]
+margin_left = 950.0
+margin_top = 130.0
+margin_right = 1050.0
+margin_bottom = 230.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.448352, 0.893857, 0, -0.893857, -0.448352, 0, 52.1352, -56.8273 )
+light_energy = 0.8
+light_indirect_energy = 0.4
+light_specular = 0.8
+shadow_enabled = true
+shadow_contact = 1.03
+shadow_reverse_cull_face = true
+spot_range = 240.0
+spot_attenuation = 0.203063
+spot_angle_attenuation = 1.4
+
+[node name="Camera" type="Camera" parent="."]
+pause_mode = 2
+transform = Transform( -0.999988, -0.00458365, -0.00190979, -0.00419804, 0.574971, 0.818163, -0.0026521, 0.818161, -0.574983, 0, 45, -55 )
+current = true
+fov = 65.8
+near = 10.0
+script = ExtResource( 10 )
+
+[node name="reset_instruct" type="Label" parent="Camera"]
+visible = false
+margin_left = 180.0
+margin_top = 120.0
+margin_right = 322.0
+margin_bottom = 151.0
+rect_scale = Vector2( 5, 5 )
+custom_colors/font_color = Color( 0, 0.941176, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+text = "You win!
+PRESS SPACE TO RESET"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Popup" parent="Camera"]
+visible = true
+material = SubResource( 39 )
+margin_left = 265.0
+margin_top = 150.0
+margin_right = 765.0
+margin_bottom = 450.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="Camera/Pause"]
+margin_left = 140.0
+margin_top = 50.0
+margin_right = 340.0
+margin_bottom = 90.0
+text = "Continue"
+script = ExtResource( 19 )
+
+[node name="Main Menu" type="Button" parent="Camera/Pause"]
+margin_left = 140.0
+margin_top = 105.0
+margin_right = 340.0
+margin_bottom = 145.0
+text = "Main Menu"
+script = ExtResource( 20 )
+
+[node name="Close Game" type="Button" parent="Camera/Pause"]
+margin_left = 140.0
+margin_top = 160.0
+margin_right = 152.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 200, 40 )
+action_mode = 0
+shortcut = SubResource( 41 )
+text = "Close Game"
+script = ExtResource( 18 )

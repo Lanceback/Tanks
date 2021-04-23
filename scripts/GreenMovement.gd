@@ -32,13 +32,13 @@ func get_input(delta):
 func bullet_hit(damage):
 	if disabled == false:
 		health -= damage
-		$"../Camera/g_hp".value = health
+		$"g_hp".value = health
 		
 		if health <= 0:
 			$"../Camera".yellow()
 			disabled = true
 			var boom = splosion.instance()
 			self.add_child(boom)
-			boom.get_child(0).fire()
-			boom.get_child(1).fire()
+			boom.get_child(0).emitting = true
+			boom.get_child(1).emitting = true
 			$Cannon.stop()

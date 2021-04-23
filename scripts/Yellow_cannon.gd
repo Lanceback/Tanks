@@ -8,9 +8,6 @@ var Flames = 400
 
 var cooldown = 0
 
-func _ready():
-	get_node("y_ammo").text = str(Ammo)
-	get_node("flame").text = str(Flames)
 
 func stop():
 	Ammo = 0
