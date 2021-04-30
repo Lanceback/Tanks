@@ -20,5 +20,5 @@ Unfortunately, I could not specify just one shift key, so both shift keys fire i
 This unit is faster but has less health than the other.
 
 The best way to win with this unit (that I have found) is to conserver your ammunition until your opponent has nearly
-expended all of theirs and get in close. You can fire both the flamethrower and the main cannon.
+expended all of theirs and get in close. You can fire both the flamethrower and the main cannon at the same time to do more damage.
 Just watch out for those missiles.
