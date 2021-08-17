@@ -1,5 +1,5 @@
 # Tanks
-An old project rises from the Forgotten Files of the Hidden Folder of DOOM!
+Thhis is an old project I maade years ago. I decided to recreate it.
 
 ## Controls
 Green Tank:
