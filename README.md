@@ -1,5 +1,5 @@
 # Tanks
-Thhis is an old project I maade years ago. I decided to recreate it.
+Thhis is an old project I made years ago. I decided to recreate it.
 
 ## Controls
 Green Tank:
